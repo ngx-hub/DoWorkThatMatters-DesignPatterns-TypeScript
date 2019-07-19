@@ -1,1 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-weight: 400;
+    color: #404040;
+    background-color: #fff;
+    overflow: hidden;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+
+    h1, h2, h3, h4, h5, h6, p, strong, b, li {
+        cursor: default;
+    }
+    h1, h2, h3, h4, h5, h6,
+    span, p, a, strong, b, i {
+        margin: 0;
+        padding: 0;
+    }
+}
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8f8ff;
+  box-shadow: inset 0 0 2px rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 1200px;
+    height: 100%;
+    padding: 0 16px;
+    margin: 0 auto;
+    overflow: hidden;
+    @media (max-width: 1199px){
+        width: 750px;
+    }
+    @media (max-width: 767px){
+        width: 320px;
+    }
+}

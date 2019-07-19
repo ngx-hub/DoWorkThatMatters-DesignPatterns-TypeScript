@@ -3,6 +3,10 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@templates/*": ["src/templates/*"],
+    },
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,

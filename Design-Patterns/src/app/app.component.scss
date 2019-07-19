@@ -1,0 +1,59 @@
+@mixin boxShadow {
+    box-shadow: 0 3px 1px -2px rgba(214, 214, 214, 0.3),
+                0 2px 2px 0 rgba(193, 193, 193, 0.24),
+                0 1px 5px 0 rgba(255, 255, 255, 0.22);
+}
+
+app-root {
+    header {
+        background-color: #fafafa;
+        margin-bottom: 32px;
+        @include boxShadow();
+        .toolbar {
+            display: flex;
+            align-items: center;
+        }
+        .title {
+            font-size: 32px;
+        }
+        .logo_img {
+            width: 64px;
+            height: 64px;
+            background: url('/assets/images/ts_logo.png') 0 100%;
+            background-size: contain;
+            background-position: 0 10px;
+            background-repeat: no-repeat;
+            margin-right: 16px;
+        }
+    }
+    main {
+
+    }
+
+    .categories-wr {
+        margin-bottom: 32px;
+        .category-item {
+            background-color: #fafafa;
+            border-radius: 2px;
+            margin: 16px 0;
+            padding: 16px;
+            @include boxShadow();
+        }
+        h2 {
+            margin-bottom: 16px;
+        }
+        p {
+            margin-left: 16px;
+        }
+    }
+
+    .card-wr {
+        .card {
+            background-color: #fafafa;
+            border-radius: 2px;
+        }
+    }
+    .result-wr {
+        font-size: 24px;
+    }
+}
