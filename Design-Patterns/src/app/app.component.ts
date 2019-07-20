@@ -3,13 +3,15 @@ import FactoryOfFactories from '@templates/creational/abstract_factory/FactoryOf
 import { ChromeOsBookFactory } from '@templates/creational/abstract_factory/ChromeOsBookFactory';
 import { Geek } from '@templates/creational/builder/Greek';
 import { Manufacturer } from '@templates/creational/builder/Manufacturer';
+import { Sheep } from '@templates/creational/prototype/Sheep';
 
 const PATTERNS: any = [
 	{
 		title: `Creational`,
 		patterns: [
 			`Abstract Factory`,
-			`Builder`
+			`Builder`,
+			`Prototype`
 		]
 	}
 ];
@@ -25,6 +27,7 @@ export class AppComponent implements OnInit {
 	public patternsData: any[] = [];
 	public absractFabricResult: string;
 	public builderResult: string;
+	public prototypeResult: string;
 
 	constructor() {
 		this.patternsData = PATTERNS;
@@ -33,6 +36,7 @@ export class AppComponent implements OnInit {
 	public ngOnInit(): void {
 		this.runPatternAbsractFabric();
 		this.runPatternBuilder();
+		this.runPatternPrototype();
 	}
 	  
 	// AbsractFabric
@@ -52,5 +56,13 @@ export class AppComponent implements OnInit {
 		const pc: string = Manufacturer.manufacture(geek);
 
 		this.builderResult = pc;
+	}
+
+	// Prototype
+	private runPatternPrototype(): void {
+		const sheep: Sheep = new Sheep(`Moly`, `white`);
+		const cloneSheep: Sheep = <Sheep> sheep.clone();
+
+		this.prototypeResult = `${cloneSheep.getName()}, ${cloneSheep.getColor()}`;
 	}
 }
