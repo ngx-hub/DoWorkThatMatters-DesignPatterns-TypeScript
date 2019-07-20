@@ -5,6 +5,7 @@ import { Geek } from '@templates/creational/builder/Greek';
 import { Manufacturer } from '@templates/creational/builder/Manufacturer';
 import { Sheep } from '@templates/creational/prototype/Sheep';
 import { Singleton } from '@templates/creational/singleton/Singleton';
+import { HDMIToVGAAdapter } from '@templates/structural/adapter/HDMIToVGAAdapter';
 
 const PATTERNS: any = [
 	{
@@ -14,6 +15,12 @@ const PATTERNS: any = [
 			`Builder`,
 			`Prototype`,
 			`Singleton`
+		]
+	},
+	{
+		title: `Structural`,
+		patterns: [
+			`Adapter`
 		]
 	}
 ];
@@ -31,6 +38,7 @@ export class AppComponent implements OnInit {
 	public builderResult: string;
 	public prototypeResult: string;
 	public singletonResult: string;
+	public adapterResult: string;
 
 	constructor() {
 		this.patternsData = PATTERNS;
@@ -41,6 +49,7 @@ export class AppComponent implements OnInit {
 		this.runPatternBuilder();
 		this.runPatternPrototype();
 		this.runPatternSingleton();
+		this.runPatternAdapter();
 	}
 	  
 	// AbsractFabric
@@ -76,5 +85,12 @@ export class AppComponent implements OnInit {
 		const singleton2 = Singleton.getInstance();
 
 		this.singletonResult = (singleton === singleton2).toString();
+	}
+
+	// Adapter
+	private runPatternAdapter(): void {
+		const adapter = new HDMIToVGAAdapter();
+
+		this.adapterResult = adapter.handleDigitalSignal();
 	}
 }
