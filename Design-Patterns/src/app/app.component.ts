@@ -4,6 +4,7 @@ import { ChromeOsBookFactory } from '@templates/creational/abstract_factory/Chro
 import { Geek } from '@templates/creational/builder/Greek';
 import { Manufacturer } from '@templates/creational/builder/Manufacturer';
 import { Sheep } from '@templates/creational/prototype/Sheep';
+import { Singleton } from '@templates/creational/singleton/Singleton';
 
 const PATTERNS: any = [
 	{
@@ -11,7 +12,8 @@ const PATTERNS: any = [
 		patterns: [
 			`Abstract Factory`,
 			`Builder`,
-			`Prototype`
+			`Prototype`,
+			`Singleton`
 		]
 	}
 ];
@@ -28,6 +30,7 @@ export class AppComponent implements OnInit {
 	public absractFabricResult: string;
 	public builderResult: string;
 	public prototypeResult: string;
+	public singletonResult: string;
 
 	constructor() {
 		this.patternsData = PATTERNS;
@@ -37,6 +40,7 @@ export class AppComponent implements OnInit {
 		this.runPatternAbsractFabric();
 		this.runPatternBuilder();
 		this.runPatternPrototype();
+		this.runPatternSingleton();
 	}
 	  
 	// AbsractFabric
@@ -64,5 +68,13 @@ export class AppComponent implements OnInit {
 		const cloneSheep: Sheep = <Sheep> sheep.clone();
 
 		this.prototypeResult = `${cloneSheep.getName()}, ${cloneSheep.getColor()}`;
+	}
+
+	// Singleton
+	private runPatternSingleton(): void {
+		const singleton = Singleton.getInstance();
+		const singleton2 = Singleton.getInstance();
+
+		this.singletonResult = (singleton === singleton2).toString();
 	}
 }
