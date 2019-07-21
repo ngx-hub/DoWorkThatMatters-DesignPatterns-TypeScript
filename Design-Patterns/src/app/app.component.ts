@@ -6,6 +6,10 @@ import { Manufacturer } from '@templates/creational/builder/Manufacturer';
 import { Sheep } from '@templates/creational/prototype/Sheep';
 import { Singleton } from '@templates/creational/singleton/Singleton';
 import { HDMIToVGAAdapter } from '@templates/structural/adapter/HDMIToVGAAdapter';
+import { About } from '@templates/structural/bridge/About';
+import { LightTheme } from '@templates/structural/bridge/LightTheme';
+import { Contacts } from '@templates/structural/bridge/Contacts';
+import { DarkTheme } from '@templates/structural/bridge/DarkTheme';
 
 const PATTERNS: any = [
 	{
@@ -39,6 +43,7 @@ export class AppComponent implements OnInit {
 	public prototypeResult: string;
 	public singletonResult: string;
 	public adapterResult: string;
+	public bridgeResult: string;
 
 	constructor() {
 		this.patternsData = PATTERNS;
@@ -50,6 +55,7 @@ export class AppComponent implements OnInit {
 		this.runPatternPrototype();
 		this.runPatternSingleton();
 		this.runPatternAdapter();
+		this.runPatternBridge();
 	}
 	  
 	// AbsractFabric
@@ -92,5 +98,13 @@ export class AppComponent implements OnInit {
 		const adapter = new HDMIToVGAAdapter();
 
 		this.adapterResult = adapter.handleDigitalSignal();
+	}
+
+	// Adapter
+	private runPatternBridge(): void {
+		const about: About = new About(new LightTheme());
+		const contacts: Contacts = new Contacts(new DarkTheme());
+
+		this.bridgeResult = `${about.getContent()} \n ${contacts.getContent()}`;
 	}
 }
