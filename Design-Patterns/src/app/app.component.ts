@@ -10,6 +10,9 @@ import { About } from '@templates/structural/bridge/About';
 import { LightTheme } from '@templates/structural/bridge/LightTheme';
 import { Contacts } from '@templates/structural/bridge/Contacts';
 import { DarkTheme } from '@templates/structural/bridge/DarkTheme';
+import { Company } from '@templates/structural/composite/Company';
+import { Designer } from '@templates/structural/composite/Designer';
+import { Developer } from '@templates/structural/composite/Developer';
 
 const PATTERNS: any = [
 	{
@@ -46,6 +49,7 @@ export class AppComponent implements OnInit {
 	public singletonResult: string;
 	public adapterResult: string;
 	public bridgeResult: string;
+	public compositeResult: string;
 
 	constructor() {
 		this.patternsData = PATTERNS;
@@ -58,6 +62,7 @@ export class AppComponent implements OnInit {
 		this.runPatternSingleton();
 		this.runPatternAdapter();
 		this.runPatternBridge();
+		this.runPatternComposite();
 	}
 	  
 	// AbsractFabric
@@ -102,11 +107,22 @@ export class AppComponent implements OnInit {
 		this.adapterResult = adapter.handleDigitalSignal();
 	}
 
-	// Adapter
+	// Bridge
 	private runPatternBridge(): void {
 		const about: About = new About(new LightTheme());
 		const contacts: Contacts = new Contacts(new DarkTheme());
 
-		this.bridgeResult = `${about.getContent()} \n ${contacts.getContent()}`;
+		this.bridgeResult = `${about.getContent()}\n${contacts.getContent()}`;
+	}
+
+	// Composite
+	private runPatternComposite(): void {
+		const company: Company = new Company();
+		company.addEmployee(new Designer(`Bob`, 3000));
+		company.addEmployee(new Developer(`Jhon`, 3000));
+		company.addEmployee(new Designer(`Alex`));
+		company.addEmployee(new Developer(`Tom`));
+
+		this.compositeResult = company.getNetSalaty();
 	}
 }

@@ -25,6 +25,6 @@ export class PC {
     }
 
     public toString(): string {
-        return `Motherboard: ${this.motherboard}, CPU: ${this.cpu}, SSD: ${this.ssd}`;
+        return `<b>Motherboard:</b> ${this.motherboard}\n<b>CPU:</b> ${this.cpu}\n<b>SSD:</b> ${this.ssd}`;
     }
 }

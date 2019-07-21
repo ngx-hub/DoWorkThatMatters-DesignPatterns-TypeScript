@@ -44,6 +44,7 @@ app-root {
         }
         p {
             margin-left: 16px;
+            margin-bottom: 12px;
         }
     }
 
@@ -54,6 +55,10 @@ app-root {
         }
     }
     .result-wr {
-        font-size: 24px;
+        margin-left: 16px;
+        p {
+            margin-bottom: 12px;
+            white-space: pre-wrap;
+        }
     }
 }
