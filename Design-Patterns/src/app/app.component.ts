@@ -24,7 +24,9 @@ const PATTERNS: any = [
 	{
 		title: `Structural`,
 		patterns: [
-			`Adapter`
+			`Adapter`,
+			`Bridge`,
+			`Composite`
 		]
 	}
 ];
