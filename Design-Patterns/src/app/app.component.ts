@@ -16,6 +16,8 @@ import { Developer } from '@templates/structural/composite/Developer';
 import SimpleService from '@templates/structural/decorator/SimpleService';
 import ManikureService from '@templates/structural/decorator/ManikureService';
 import HaircutService from '@templates/structural/decorator/HaircutService';
+import Computer from '@templates/structural/facade/Computer';
+import ComputerFacade from '@templates/structural/facade/ComputerFacade';
 
 const PATTERNS: any = [
 	{
@@ -34,6 +36,7 @@ const PATTERNS: any = [
 			`Bridge`,
 			`Composite`,
 			`Decorator`,
+			`Facade`,
 		]
 	}
 ];
@@ -69,6 +72,7 @@ export class AppComponent implements OnInit {
 		this.runPatternBridge();
 		this.runPatternComposite();
 		this.runPatternDecorator();
+		this.runPatternFacade();
 	}
 	  
 	// AbsractFabric
@@ -131,14 +135,25 @@ export class AppComponent implements OnInit {
 
 		this.compositeResult = company.getNetSalaty();
 	}
+
 	// Composite
 	private runPatternDecorator(): void {
 		const simpleService: SimpleService = new SimpleService();
 		const manikureService: ManikureService = new ManikureService(simpleService);
 		const haircutService: HaircutService = new HaircutService(simpleService);
 
-		this.decoreatorResult = `${simpleService.getDescription()} ${simpleService.getCost()}
-${manikureService.getDescription()} ${manikureService.getCost()}
-${haircutService.getDescription()} ${haircutService.getCost()}`;
+		const s1: string = `${simpleService.getDescription()} ${simpleService.getCost()}`;
+		const s2: string = `${manikureService.getDescription()} ${manikureService.getCost()}`;
+		const s3: string = `${haircutService.getDescription()} ${haircutService.getCost()}`;
+
+		this.decoreatorResult = `${s1}\n${s2}\n${s3}`;
+	}
+
+
+	// Facade
+	private runPatternFacade(): void {
+		const computerFacade: ComputerFacade = new ComputerFacade(new Computer());
+		computerFacade.turnOn();
+		computerFacade.turnOff();
 	}
 }
