@@ -13,6 +13,9 @@ import { DarkTheme } from '@templates/structural/bridge/DarkTheme';
 import { Company } from '@templates/structural/composite/Company';
 import { Designer } from '@templates/structural/composite/Designer';
 import { Developer } from '@templates/structural/composite/Developer';
+import SimpleService from '@templates/structural/decorator/SimpleService';
+import ManikureService from '@templates/structural/decorator/ManikureService';
+import HaircutService from '@templates/structural/decorator/HaircutService';
 
 const PATTERNS: any = [
 	{
@@ -29,7 +32,8 @@ const PATTERNS: any = [
 		patterns: [
 			`Adapter`,
 			`Bridge`,
-			`Composite`
+			`Composite`,
+			`Decorator`,
 		]
 	}
 ];
@@ -50,6 +54,7 @@ export class AppComponent implements OnInit {
 	public adapterResult: string;
 	public bridgeResult: string;
 	public compositeResult: string;
+	public decoreatorResult: string;
 
 	constructor() {
 		this.patternsData = PATTERNS;
@@ -63,6 +68,7 @@ export class AppComponent implements OnInit {
 		this.runPatternAdapter();
 		this.runPatternBridge();
 		this.runPatternComposite();
+		this.runPatternDecorator();
 	}
 	  
 	// AbsractFabric
@@ -124,5 +130,15 @@ export class AppComponent implements OnInit {
 		company.addEmployee(new Developer(`Tom`));
 
 		this.compositeResult = company.getNetSalaty();
+	}
+	// Composite
+	private runPatternDecorator(): void {
+		const simpleService: SimpleService = new SimpleService();
+		const manikureService: ManikureService = new ManikureService(simpleService);
+		const haircutService: HaircutService = new HaircutService(simpleService);
+
+		this.decoreatorResult = `${simpleService.getDescription()} ${simpleService.getCost()}
+${manikureService.getDescription()} ${manikureService.getCost()}
+${haircutService.getDescription()} ${haircutService.getCost()}`;
 	}
 }
