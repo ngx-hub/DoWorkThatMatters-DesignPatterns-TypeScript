@@ -20,6 +20,8 @@ import Computer from '@templates/structural/facade/Computer';
 import ComputerFacade from '@templates/structural/facade/ComputerFacade';
 import TeaProducer from '@templates/structural/flyweight/TeaProducer';
 import TeaShop from '@templates/structural/flyweight/TeaShop';
+import Security from '@templates/structural/proxy/Security';
+import OfficeLock from '@templates/structural/proxy/OfficeLock';
 
 const PATTERNS: any = [
 	{
@@ -40,6 +42,7 @@ const PATTERNS: any = [
 			`Decorator`,
 			`Facade`,
 			`Flyweight`,
+			`Proxy`
 		]
 	}
 ];
@@ -77,6 +80,7 @@ export class AppComponent implements OnInit {
 		this.runPatternDecorator();
 		this.runPatternFacade();
 		this.runPatternFlyweight();
+		this.runPatternProxy();
 	}
 	  
 	// AbsractFabric
@@ -173,5 +177,14 @@ export class AppComponent implements OnInit {
 		teaShop.takeOrder(`double`, 7);
 
 		teaShop.serve();
+	}
+
+	// Proxy
+	private runPatternProxy(): void {
+		const door: Security = new Security(new OfficeLock());
+		door.open(`test`);
+
+		door.open(`secretpassword`);
+		door.close();
 	}
 }
