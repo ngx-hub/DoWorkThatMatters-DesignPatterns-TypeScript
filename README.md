@@ -1,6 +1,8 @@
-![Do work that matters](https://yt3.ggpht.com/a/AGF-l7_jmGIiURBep4sky6CRcfXfA6RF3FMjzlhkqA=s288-mo-c-c0xffffffff-rj-k-no "Do work that matters")
+<!-- ![Do work that matters](https://yt3.ggpht.com/a/AGF-l7_jmGIiURBep4sky6CRcfXfA6RF3FMjzlhkqA=s288-mo-c-c0xffffffff-rj-k-no "Do work that matters") -->
 
-## [Source: Шаблоны проектирования. Typescript](https://www.youtube.com/playlist?list=PLIFGfLqvZ-yFrZbynkxYMnlHUw_XwH90m)
+# Do work that matters: Шаблоны проектирования. Typescript
+
+## [Source](https://www.youtube.com/playlist?list=PLIFGfLqvZ-yFrZbynkxYMnlHUw_XwH90m)
 
 * [Введение](#Введение)
 * [Абстрактная фабрика](#Абстрактная-фабрика)
@@ -170,7 +172,7 @@
 # Приспособленец
 ### CODE: `/teplates/structural/flyweight`
 
-Приспособленец - (англ. Flyweight, "легковесный (элемент)") - структурный шаблон проектирования, при котором объект, представляющий себя как уникальный экземпляр в разных местах программы, по факту не является таковым.
+Приспособленец или Легковес - (англ. Flyweight, "легковесный (элемент)") - структурный шаблон проектирования, при котором объект, представляющий себя как уникальный экземпляр в разных местах программы, по факту не является таковым.
 
 Цель:
   - Оптимизация работы с памятью путём предотвращения создания экземпляров, имеющих общую сущность.

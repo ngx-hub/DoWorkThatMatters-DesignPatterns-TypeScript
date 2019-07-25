@@ -18,6 +18,8 @@ import ManikureService from '@templates/structural/decorator/ManikureService';
 import HaircutService from '@templates/structural/decorator/HaircutService';
 import Computer from '@templates/structural/facade/Computer';
 import ComputerFacade from '@templates/structural/facade/ComputerFacade';
+import TeaProducer from '@templates/structural/flyweight/TeaProducer';
+import TeaShop from '@templates/structural/flyweight/TeaShop';
 
 const PATTERNS: any = [
 	{
@@ -37,6 +39,7 @@ const PATTERNS: any = [
 			`Composite`,
 			`Decorator`,
 			`Facade`,
+			`Flyweight`,
 		]
 	}
 ];
@@ -73,6 +76,7 @@ export class AppComponent implements OnInit {
 		this.runPatternComposite();
 		this.runPatternDecorator();
 		this.runPatternFacade();
+		this.runPatternFlyweight();
 	}
 	  
 	// AbsractFabric
@@ -155,5 +159,19 @@ export class AppComponent implements OnInit {
 		const computerFacade: ComputerFacade = new ComputerFacade(new Computer());
 		computerFacade.turnOn();
 		computerFacade.turnOff();
+	}
+
+
+	// Flyweight
+	private runPatternFlyweight(): void {
+		const teaProducer: TeaProducer = new TeaProducer();
+		const teaShop: TeaShop = new TeaShop(teaProducer);
+
+		teaShop.takeOrder(`with sugar`, 1);
+		teaShop.takeOrder(`without sugar`, 2);
+		teaShop.takeOrder(`with milk`, 3);
+		teaShop.takeOrder(`double`, 7);
+
+		teaShop.serve();
 	}
 }
